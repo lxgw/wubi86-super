@@ -1,0 +1,118 @@
+# Rime schema settings
+# encoding: utf-8
+
+schema:
+  schema_id: wubi86_super
+  name: "超单五笔86"
+  version: "0.3"
+  author:
+    - 方案设计人 王永民先生
+    - 整理人 CNMan、lxgw
+  description: |
+    五笔字型86版
+    码表源自：https://github.com/CNMan/UnicodeCJK-WuBi
+    支持 CJK 基本及扩展 A～G 超大字符集
+    可用于输入生僻字
+    敲 z 鍵進入拼音反查（采用袖珍简化字拼音）
+  dependencies:
+    - pinyin_simp
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: extended_charset
+    reset: 1
+    states: [ GBK, 大 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - table_translator
+
+speller:
+  delimiter: " ;'"
+  max_code_length: 4
+  auto_select: true # 顶字上屏
+  auto_select_unique_candidate: true # 无重码自动上屏
+  auto_clear: max_length #manual|auto|max_length 
+
+translator:
+  dictionary: wubi86_super
+  enable_charset_filter: true
+  enable_encoder: true
+  encode_commit_history: true
+  enable_user_dict: false # 关闭词频调整
+  enable_sentence: false # 关闭句子输入
+  max_phrase_length: 4
+  disable_user_dict_for_patterns:
+    - "^z.*$"
+
+reverse_lookup:
+  dictionary: pinyin_simp
+  prefix: "z"
+  suffix: "'"
+  tips: 〔拼音〕
+  preedit_format:
+    - xform/([nl])v/$1ü/
+    - xform/([nl])ue/$1üe/
+    - xform/([jqxy])v/$1u/
+
+punctuator:
+  import_preset: default
+
+key_binder:
+  import_preset: default
+  bindings:
+    - {accept: bracketleft, send: Page_Up, when: paging} # [上翻页
+    - {accept: bracketright, send: Page_Down, when: has_menu} # ]下翻页
+    - {accept: comma, send: comma, when: paging} #注销逗号翻页
+    - {accept: period, send: period, when: has_menu} #注销句号翻页
+    - {accept: semicolon, send: 2, when: has_menu} #分号次选
+  #  - {accept: Release+semicolon, send: semicolon, when: has_menu} #如要使用分号引导符号功能，并双击上屏分号，需注销此行
+    # - {accept: period, send: 2, when: has_menu} #句号次选
+    # - {accept:  dollar, send: 2, when: composing}
+    - {accept: Release+dollar, send: period, when: composing}
+    - {accept: Release+period, send: period, when: composing}
+    - {accept: comma, send: 3, when: has_menu} #逗号第三项
+    - {accept: bar, send: 2, when: composing}
+    - {accept: Release+bar, send: comma, when: composing}
+    - {accept: Release+comma, send: comma, when: composing}
+
+    - {accept: "Tab", send: Escape, when: composing}
+    - {accept: "Caps_Lock", send: Escape, when: composing} 
+    - {accept: "Shift_L", send: Escape, when: composing}
+    - {accept: "Shift_R", send: Escape, when: composing}
+    - {accept: "Shift+space", toggle: full_shape, when: always} #切换全半角
+    - {accept: "Control+period", toggle: ascii_punct, when: always} #切换中英标点
+   # - {accept: "Control+m", select: .next, when: always} #切换方案
+   # - {accept: "Control+j", toggle: simplification, when: always} #切换简繁
+    # - {when: has_menu, accept: space, send: space}      #针对候选时，作用空格
+    # - {when: composing, accept: space, send: Return}    #有输入码时，回车清编码
+
+recognizer:
+  import_preset: default
+  patterns:
+    uppercase: "" #中文状态大写锁定直接上屏
+    reverse_lookup: "^z[a-z]*'?$"
+    punct: ""
