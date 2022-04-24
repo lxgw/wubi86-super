@@ -9,7 +9,7 @@
 > - CJK-F by ☂¹₄²₈⁵₇☂
 > - CJK-G by [CPC中文印刷社区](http://www.cnprint.org/)网友[dingsir](http://www.cnprint.org/bbs/members/697305/)
 
-下图为 Unicode 14.0 新增字符的编码。
+下图为 Unicode 14.0 新增汉字的编码。
 
 ![](https://s3.bmp.ovh/imgs/2022/04/23/b40b96b787de95b0.png)
 
