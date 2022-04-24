@@ -3,7 +3,10 @@
 
 码表基于 [CNMan/UnicodeCJK-WuBi](https://github.com/CNMan/UnicodeCJK-WuBi) 整理，并由 [RIME 官方「五笔 86」仓库](https://github.com/rime/rime-wubi) 提取一、二、三键简码。
 
+下图为 Unicode 14.0 新增字符的编码。
+
 ![](https://s3.bmp.ovh/imgs/2022/04/23/b40b96b787de95b0.png)
+
 > **注：** 
 > 1. 由于在五笔 86 中，「𫜵」`U+2B735` 为「豸」`eer`「貌」`eerq` 等字的第一个字根，故按照字根字的编码规则，编码为 `etyt`。
 > 2. 本方案中，繁体部首「飠」在组字时编码为 `wp`，如「飯」字的编码为 `wprc`。单独输入「飠」偏旁时编码为 `wyvy`。此外有部分「飠」部字前三码为 `wgv`，与该字在 Unicode 提交的源字形有关。
