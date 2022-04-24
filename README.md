@@ -4,7 +4,7 @@
 
 码表基于 [CNMan/UnicodeCJK-WuBi](https://github.com/CNMan/UnicodeCJK-WuBi) 整理，并由 [RIME 方案仓库「五笔 86」方案](https://github.com/rime/rime-wubi) 提取一、二、三键简码。
 
-> **数据来源：**
+> **86 五笔编码数据来源：**
 > - 一级、二级、三级简码 by [RIME 方案仓库「五笔 86」方案](https://github.com/rime/rime-wubi) | [东风破 plum](https://github.com/rime/plum)
 > - [CJK-Basic/CJK-A/CJK-B/CJK-C/CJK-D/CJK-E](https://pan.baidu.com/s/1hq5kedm) by [五笔吧](http://tieba.baidu.com/f?kw=五笔&ie=utf-8)小吧主[LSJ天道酬勤](http://tieba.baidu.com/home/main?un=LSJ天道酬勤&ie=utf-8)
 > - CJK-F by ☂¹₄²₈⁵₇☂
