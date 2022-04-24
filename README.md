@@ -1,5 +1,6 @@
 # wubi86-super
 一款适用于 RIME 的「王码五笔字型 86 版」方案，支持 Unicode 14.0 范围内 CJK 基本汉字区域至汉字扩展 G 区域超大字符集，可用于输入基本区和扩展区 A~G 的生僻字。
+> 如：「𬱖」`mdmy`（「頔」`mdmy`） 「𮧵」`fnhf`（「韡」`nhkf`） 「𫖯」`iqdm`（「頫」`iqdm`） 「䶮」`dxgd`（「龑」`uegd`） 
 
 码表基于 [CNMan/UnicodeCJK-WuBi](https://github.com/CNMan/UnicodeCJK-WuBi) 整理，并由 [RIME 方案仓库「五笔 86」方案](https://github.com/rime/rime-wubi) 提取一、二、三键简码。
 
